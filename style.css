@@ -10,3 +10,5 @@ a { color: var(--gold); }
 .links { margin-top: 32px; }
 ul { padding-left: 22px; }
 li { margin: 6px 0; }
+footer { max-width: 760px; margin: 0 auto; padding: 20px 16px 40px; border-top: 1px solid #26304e; color: var(--muted); font-size: 15px; text-align: center; }
+footer p { margin: 6px 0; }
