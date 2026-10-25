@@ -21,23 +21,34 @@
   <div class="lang"><a href="index.html">TR</a><a href="en.html" class="on">EN</a></div>
 </div></header>
 
-<div class="hero">
-  <div class="bg"></div>
+<div class="hero fun">
+  <div class="bg2"></div>
+  <div class="flies" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="in">
-    <div class="art"><img src="img/hero.jpg" alt="Bavul Kasabası cover art: a tiny town inside an old leather suitcase"></div>
+    <div class="stage">
+      <div class="art float"><img src="img/hero.jpg" alt="Bavul Kasabası cover art: a tiny town inside an old leather suitcase"></div>
+      <span class="chip c1">⚔ 6 suitcases · 60 stages</span>
+      <span class="chip c2">🏰 50-floor tower</span>
+      <span class="chip c3">✨ signature skills</span>
+    </div>
     <div>
-      <h1>Bavul Kasabası</h1>
-      <p class="tag">Grow a town inside your suitcase.</p>
-      <p>Odo, a wandering inventor, shrank lands in danger and kept them safe inside his suitcases. Until the Shadow Emperor scattered them far and wide. Now he has just one old leather suitcase… and you.</p>
-      <p>Build your town, collect heroes and rescue the suitcases one by one in turn-based tactical battles.</p>
-      <div class="badges"><span>Free</span><span>No ads</span><span>No in-app purchases</span><span>English · Türkçe</span><span>iPhone</span></div>
-      <a class="btn" href="#game">Discover</a><a class="btn soft" href="#support">Support</a>
-      <p class="soon">Coming soon to the App Store. The game is in early access with new content every week.</p>
+      <p class="kicker">Early access · iPhone</p>
+      <h1 class="shine">Bavul Kasabası</h1>
+      <p class="tag">Grow a town in your suitcase, collect heroes and <span>save the world one suitcase at a time!</span></p>
+      <p>Odo the wandering inventor kept whole lands safe inside his suitcases… until the Shadow Emperor came. Now he has just one old leather suitcase. And you.</p>
+      <div class="cta">
+        <a class="store" data-store href="#" aria-disabled="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 3v13h10V5H7zm4 14.5a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/></svg>
+          <span><small data-store-small>Coming soon</small><b data-store-label>on the App Store</b></span>
+        </a>
+        <a class="btn soft" href="#game">Discover ↓</a>
+      </div>
+      <div class="badges"><span>Free</span><span>No ads</span><span>No purchases</span><span>English · Türkçe</span></div>
     </div>
   </div>
 </div>
 
-<section id="game">
+<section id="game" class="reveal">
   <h2>Odo's journey</h2>
   <p class="lead">Every suitcase is a new region with its own enemy army and its own boss.</p>
   <div class="story">
@@ -63,7 +74,7 @@
   </div><button class="nav next" aria-label="next">&#8250;</button><div class="dots"></div></div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>What's inside</h2>
   <p class="lead">Great for a quick session on the go, and for a long adventure.</p>
   <div class="features">
@@ -76,13 +87,20 @@
   </div>
 </section>
 
-<section>
-  <div class="map">
-    <img loading="lazy" src="img/harita.jpg" alt="Odo's map">
-    <div>
-      <h2>A long road</h2>
-      <p class="lead">Six suitcases await you in season 1. Beyond the purple fog at the top of the map lie darker suitcases… season 2 is on its way.</p>
-    </div>
+<section class="journey reveal">
+  <div class="mapwrap"><img loading="lazy" src="img/harita.jpg" alt="Odo's map"></div>
+  <div>
+    <h2>A long road</h2>
+    <p class="lead">From the fairy chimneys to the Shadow Palace: a boss awaits you at every stop.</p>
+    <ol class="stops">
+      <li><img loading="lazy" src="img/boss_1.jpg" alt=""><div><b>Fairy Chimneys</b><span>Bone Commander · rises again</span></div></li>
+      <li><img loading="lazy" src="img/boss_2.jpg" alt=""><div><b>Crimson Canyon</b><span>Bandit Chief · grows stronger with each hit</span></div></li>
+      <li><img loading="lazy" src="img/boss_3.jpg" alt=""><div><b>Glacier Fjords</b><span>Frost King · freezes</span></div></li>
+      <li><img loading="lazy" src="img/boss_4.jpg" alt=""><div><b>Emerald Forest</b><span>Forest Warden · heals itself</span></div></li>
+      <li><img loading="lazy" src="img/boss_5.jpg" alt=""><div><b>Ash Volcano</b><span>Ash Lord · burns attackers</span></div></li>
+      <li><img loading="lazy" src="img/boss_6.jpg" alt=""><div><b>Shadow Palace</b><span>Shadow Emperor · enrages</span></div></li>
+      <li class="next"><div class="fog">?</div><div><b>Season 2 · Dark Suitcases</b><span>Beyond the purple fog… coming soon</span></div></li>
+    </ol>
   </div>
 </section>
 

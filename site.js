@@ -1,3 +1,22 @@
+// App Store bağlantısı: oyun yayına çıkınca buraya adres yazılır, tüm "App Store" düğmeleri kendiliğinden açılır.
+var APP_STORE_URL = "";
+document.querySelectorAll('[data-store]').forEach(function (a) {
+  if (!APP_STORE_URL) { a.addEventListener('click', function (e) { e.preventDefault(); }); return; }
+  var en = document.documentElement.lang === 'en';
+  a.href = APP_STORE_URL;
+  a.removeAttribute('aria-disabled');
+  a.querySelector('[data-store-small]').textContent = en ? 'Download on the' : "Hemen indir";
+  a.querySelector('[data-store-label]').textContent = en ? 'App Store' : "App Store'dan";
+});
+
+// Kaydırınca beliren bölümler
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+} else document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('seen'); });
+
 // Ekran görüntüsü galerisi: oklar, noktalar ve parmakla kaydırma (kaydırma çubuğu gizli).
 document.querySelectorAll('.carousel').forEach(function (c) {
   var track = c.querySelector('.shots');

@@ -21,23 +21,34 @@
   <div class="lang"><a href="index.html" class="on">TR</a><a href="en.html">EN</a></div>
 </div></header>
 
-<div class="hero">
-  <div class="bg"></div>
+<div class="hero fun">
+  <div class="bg2"></div>
+  <div class="flies" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="in">
-    <div class="art"><img src="img/hero.jpg" alt="Bavul Kasabası kapak görseli: eski bir deri bavulun içinde minik bir kasaba"></div>
+    <div class="stage">
+      <div class="art float"><img src="img/hero.jpg" alt="Bavul Kasabası kapak görseli: eski bir deri bavulun içinde minik bir kasaba"></div>
+      <span class="chip c1">⚔ 6 bavul · 60 bölüm</span>
+      <span class="chip c2">🏰 50 katlı kule</span>
+      <span class="chip c3">✨ imza yetenekleri</span>
+    </div>
     <div>
-      <h1>Bavul Kasabası</h1>
-      <p class="tag">Bavulunda bir kasaba büyüt.</p>
-      <p>Gezgin mucit Odo, tehlikedeki diyarları küçültüp bavullarında saklardı. Ta ki Gölge İmparatoru bavulları dört bir yana savurana dek. Şimdi elinde tek bir eski deri bavul var… ve yanında sen.</p>
-      <p>Kasabanı kur, kahramanlarını topla, sıra tabanlı taktik savaşlarla bavulları tek tek kurtar.</p>
-      <div class="badges"><span>Ücretsiz</span><span>Reklam yok</span><span>Uygulama içi satın alma yok</span><span>Türkçe · English</span><span>iPhone</span></div>
-      <a class="btn" href="#oyun">Oyunu tanı</a><a class="btn soft" href="#destek">Destek</a>
-      <p class="soon">Çok yakında App Store'da. Oyun erken erişimde: her hafta yenilikler geliyor.</p>
+      <p class="kicker">Erken erişim · iPhone</p>
+      <h1 class="shine">Bavul Kasabası</h1>
+      <p class="tag">Bavulunda bir kasaba büyüt, kahramanlarını topla, <span>dünyayı bavul bavul kurtar!</span></p>
+      <p>Gezgin mucit Odo'nun tüm diyarları bavullara saklanmıştı… ta ki Gölge İmparatoru gelene dek. Şimdi elinde tek bir eski deri bavul var. Ve yanında sen.</p>
+      <div class="cta">
+        <a class="store" data-store href="#" aria-disabled="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 3v13h10V5H7zm4 14.5a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/></svg>
+          <span><small data-store-small>Çok yakında</small><b data-store-label>App Store'da</b></span>
+        </a>
+        <a class="btn soft" href="#oyun">Oyunu tanı ↓</a>
+      </div>
+      <div class="badges"><span>Ücretsiz</span><span>Reklam yok</span><span>Satın alma yok</span><span>Türkçe · English</span></div>
     </div>
   </div>
 </div>
 
-<section id="oyun">
+<section id="oyun" class="reveal">
   <h2>Odo'nun yolculuğu</h2>
   <p class="lead">Her bavul ayrı bir bölge, ayrı bir düşman ordusu ve ayrı bir boss demek.</p>
   <div class="story">
@@ -63,7 +74,7 @@
   </div><button class="nav next" aria-label="next">&#8250;</button><div class="dots"></div></div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>Neler var?</h2>
   <p class="lead">Metroda kısa bir oturum için de, uzun soluklu bir macera için de.</p>
   <div class="features">
@@ -76,13 +87,20 @@
   </div>
 </section>
 
-<section>
-  <div class="map">
-    <img loading="lazy" src="img/harita.jpg" alt="Odo'nun haritası">
-    <div>
-      <h2>Yol uzun</h2>
-      <p class="lead">1. sezonda altı bavul seni bekliyor. Haritanın en tepesindeki morlu sisin ardında ise daha karanlık bavullar var… 2. sezon yolda.</p>
-    </div>
+<section class="journey reveal">
+  <div class="mapwrap"><img loading="lazy" src="img/harita.jpg" alt="Odo'nun haritası"></div>
+  <div>
+    <h2>Yol uzun</h2>
+    <p class="lead">Peri bacalarından Gölge Sarayı'na: her durakta seni bir boss bekliyor.</p>
+    <ol class="stops">
+      <li><img loading="lazy" src="img/boss_1.jpg" alt=""><div><b>Peri Bacaları</b><span>Kemik Komutanı · yeniden doğar</span></div></li>
+      <li><img loading="lazy" src="img/boss_2.jpg" alt=""><div><b>Kızıl Kanyon</b><span>Haydut Reisi · vurdukça güçlenir</span></div></li>
+      <li><img loading="lazy" src="img/boss_3.jpg" alt=""><div><b>Buzul Fiyortları</b><span>Ayaz Kralı · dondurur</span></div></li>
+      <li><img loading="lazy" src="img/boss_4.jpg" alt=""><div><b>Zümrüt Ormanı</b><span>Orman Bekçisi · kendini iyileştirir</span></div></li>
+      <li><img loading="lazy" src="img/boss_5.jpg" alt=""><div><b>Kül Volkanı</b><span>Kül Lordu · vuranı yakar</span></div></li>
+      <li><img loading="lazy" src="img/boss_6.jpg" alt=""><div><b>Gölge Sarayı</b><span>Gölge İmparatoru · öfkelenir</span></div></li>
+      <li class="next"><div class="fog">?</div><div><b>2. Sezon · Karanlık Bavullar</b><span>Morlu sisin ardında… yakında</span></div></li>
+    </ol>
   </div>
 </section>
 
