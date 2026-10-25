@@ -19,11 +19,35 @@
     if (e.key === 'Escape') document.querySelectorAll('.modal.open').forEach(close);
   });
 
+  // ---------- sağ altta sabit "indir" düğmesi (kapak geçilince belirir) ----------
+  var phone = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 3v13h10V5H7zm4 14.5a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/></svg>';
+  var fab = document.createElement('a');
+  fab.className = 'fab';
+  fab.href = '#';
+  fab.setAttribute('data-store', '');
+  fab.setAttribute('aria-disabled', 'true');
+  fab.innerHTML = phone + '<span><small data-store-small>' + (EN ? 'Coming soon' : 'Çok yakında') + '</small><b data-store-label>' + (EN ? 'Download' : 'İndir') + '</b></span>';
+  document.body.appendChild(fab);
+  // kapak ekrandan çıkınca belirir (kapağı olmayan sayfalarda biraz kaydırınca)
+  var top = document.querySelector('.hero, .pagehead');
+  if (top && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { fab.classList.toggle('show', !es[0].isIntersecting); }, { rootMargin: '-120px 0px 0px 0px' }).observe(top);
+  } else {
+    var fabShow = function () { fab.classList.toggle('show', window.scrollY > 520); };
+    window.addEventListener('scroll', fabShow, { passive: true });
+    fabShow();
+  }
+
   // ---------- App Store düğmesi ----------
-  var soon = modal('soonbox', '<div class="card"><img src="img/icon.png" alt=""><h3>' + (EN ? 'Coming soon!' : 'Çok yakında!') + '</h3><p>' +
-    (EN ? 'Bavul Kasabası is about to arrive on the App Store. Check back very soon, the download link will appear right here.'
-        : "Bavul Kasabası çok yakında App Store'da. Kısa süre sonra tekrar uğra; indirme bağlantısı tam burada olacak.") +
-    '</p><a class="btn" href="#" data-close>' + (EN ? 'Got it' : 'Tamam') + '</a></div>');
+  var soon = modal('soonbox',
+    '<div class="soon-card"><div class="soon-top"><img src="img/icon.png" alt=""></div>' +
+    '<p class="kicker">' + (EN ? 'EARLY ACCESS' : 'ERKEN ERİŞİM') + '</p>' +
+    '<h3>' + (EN ? 'Coming soon!' : 'Çok yakında!') + '</h3>' +
+    '<p class="lead2">' + (EN ? 'Bavul Kasabası is about to land on the App Store. Check back very soon: the download link will appear right here.'
+        : "Bavul Kasabası çok yakında App Store'da. Kısa süre sonra tekrar uğra: indirme bağlantısı tam burada olacak.") + '</p>' +
+    '<div class="soon-tags"><span>' + (EN ? 'Free' : 'Ücretsiz') + '</span><span>' + (EN ? 'No ads' : 'Reklam yok') + '</span><span>iPhone</span></div>' +
+    '<div class="soon-btns"><a class="btn" href="#" data-close>' + (EN ? 'Got it' : 'Tamam') + '</a>' +
+    '<a class="btn soft" href="' + (EN ? 'updates.html' : 'guncellemeler.html') + '">' + (EN ? "What's new" : 'Yenilikler') + '</a></div></div>');
   document.querySelectorAll('[data-store]').forEach(function (a) {
     if (!APP_STORE_URL) { a.addEventListener('click', function (e) { e.preventDefault(); open(soon); }); return; }
     a.href = APP_STORE_URL;
@@ -107,10 +131,26 @@
       track.scrollTo({ left: Math.round(track.scrollLeft / step) * step, behavior: 'smooth' });
     });
 
-    // büyük görsel: tıklayınca açılır, oklarla gezilir
-    var lb = modal('lightbox', '<button class="nav prev" aria-label="previous">&#8249;</button><img alt=""><button class="nav next" aria-label="next">&#8250;</button>');
-    var big = lb.querySelector('img'), cur = 0;
-    function show(i) { cur = (i + imgs.length) % imgs.length; big.src = imgs[cur].src; big.alt = imgs[cur].alt; }
+    // büyük görsel (sürüklemeyi tıklama sayma)
+    zoom(imgs, function () { return moved <= 6; });
+  });
+
+  // hikaye görselleri de büyütülebilir
+  document.querySelectorAll('.story').forEach(function (s) { zoom(Array.prototype.slice.call(s.querySelectorAll('img'))); });
+
+  // ---------- büyük görsel penceresi: tıklayınca açılır, oklarla ve klavyeyle gezilir ----------
+  function zoom(imgs, allow) {
+    if (!imgs.length) return;
+    var lb = modal('lightbox', '<button class="nav prev" aria-label="previous">&#8249;</button><figure class="big"><img alt=""><figcaption></figcaption></figure><button class="nav next" aria-label="next">&#8250;</button>');
+    var big = lb.querySelector('img'), cap = lb.querySelector('figcaption'), cur = 0;
+    function show(i) {
+      cur = (i + imgs.length) % imgs.length;
+      var im = imgs[cur];
+      big.src = im.getAttribute('data-full') || im.src;
+      var fc = im.closest('figure') && im.closest('figure').querySelector('figcaption');
+      cap.innerHTML = fc ? fc.innerHTML : (im.alt || '');
+      cap.style.display = cap.innerHTML ? '' : 'none';
+    }
     lb.querySelector('.prev').addEventListener('click', function () { show(cur - 1); });
     lb.querySelector('.next').addEventListener('click', function () { show(cur + 1); });
     document.addEventListener('keydown', function (e) {
@@ -119,11 +159,13 @@
       if (e.key === 'ArrowRight') show(cur + 1);
     });
     imgs.forEach(function (img, i) {
-      img.parentNode.addEventListener('click', function () {
-        if (moved > 6) return; // sürüklemeyi tıklama sayma
+      var target = img.closest('figure') || img;
+      target.classList.add('zoomable');
+      target.addEventListener('click', function () {
+        if (allow && !allow()) return;
         show(i);
         open(lb);
       });
     });
-  });
+  }
 })();
