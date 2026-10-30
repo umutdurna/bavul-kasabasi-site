@@ -2,7 +2,7 @@
   var EN = document.documentElement.lang === 'en';
 
   // App Store bağlantısı: oyun yayına çıkınca buraya adres yazılır; tüm "App Store" düğmeleri kendiliğinden mağazaya götürür.
-  var APP_STORE_URL = "";
+  var APP_STORE_URL = "https://apps.apple.com/app/id6826223358";
 
   // ---------- açılır pencere yardımcıları ----------
   function modal(cls, html) {
